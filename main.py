@@ -179,17 +179,41 @@ def get_time():
         fee=10+((d_hrs-1)*5)
         fees=f"You've parked for more than an hour. So, you are charged\nRs {fee}"
     feeshtml=f'''
-<html>
-    <head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    </head>
-    <body>
-        <div>Login Time: { timestamps_ }</div>
-        <div>Current Time: { currenttime }</div>
-        <div>Duration: { d_hrs } hours</div>
-        <div>Parking Fees: { fees }</div>
-    </body>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Parking Fees</title>
+  </head>
+  <body class="bg-dark" style="margin-top: 20vh;">
+    <div class="card text-center text-dark bg-light" >
+      <div class="card-header">
+        Parking Ticket
+      </div>
+      <div class="card-body">
+        <h1 class="card-title">To Pay : { fees }</h1>
+        <div class="container border-top border-bottom mt-4 mb-2 py-2">
+          <h5 class="card-text text-muted">Summary</h5>
+          <p class="card-text">Login Time : { timestamps_ }</p>
+          <p class="card-text">Current Time : { currenttime }</p>
+          <p class="card-text">Duration : { d_hrs } hours</p>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        Thanks for using Parking Garage!
+      </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
 </html>
+
 '''
     with open("templates/fees.html", "w") as f:
         f.write(feeshtml)
